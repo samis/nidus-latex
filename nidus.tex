@@ -15,7 +15,14 @@ NiDuS is an implementation of a DNS-esque protocol for the Minecraft mod OpenCom
 
 \chapter*{Preface}
 There are one or two things that need to be taken care of before the actual main topic of this book can be discussed. Firstly, it should be noted there is as of writing, no functional implementation of the protocol described here - so it should be assumed everything is from a hypothetical but realistic perspective. Secondly, I advise that you obtain the latest version of this document - the date's on the front page. After all, who knows what changes may have occurred since publication. Finally, we have all the copyright and license stuff. As this is documentation for the NiDuS protocol, it comes under the MIT license of NiDuS. For your convenience, a copy of the MIT license is included on page \pageref{mit}.
-
+\chapter{State of the Network}
+Before we take a look at the NiDuS protocol itself, I think it's only fitting to examine first of all what these protocols are, and what tools and programs are around relating to them.
+OpenComputers is a Minecraft mod, as stated before. It has network cards, both wired and wireless. Each card has a UUID (\textit{Universally Unique Identifier}) that identifies it uniquely among all network cards in the world. An example UUID would be \texttt{de305d54-75b4-431b-adb2-eb6b9e546013}. As you can see, remembering the correct UUID for each computer would be difficult --- especially if a computer had multiple network cards. On a lesser scale, the actual internet also has this problem (remembering random IP addresses such as 5.231.48.2 is difficult, especially when you need to remember many websites.) They solved it with the creation of DNS. (\textit{Domain Name System}) DNS solves this problem by providing a directory of human-readable names to IP addresses. For example, the name `google.com' might point to the IP address `74.125.230.100' \footnote{This is a drastic oversimplification, but it'll do until we discuss the actual protocol}. In the real world, DNS is a binary protocool communicating over port 53. I see no reason to implement an exact duplicate of DNS in OpenComputers using Lua, but there's definitely a need for a protocool with the same aims and purpose. This document discusses the protocol of a potential implementation, but there are a number of others. I will list all the ones I am currently aware of below.
+\begin{itemize}
+	\item \href{https://github.com/OpenPrograms/SuPeRMiNoR2-Programs/blob/master/networking/dns.lua}{SuPeRMiNoR2's implementation}
+	\item
+	\href{http://oc.cil.li/index.php?/topic/215-dns-system/}{Magi6k's implementation} \footnote{It should be noted Magi6k implemented an entire network system \href{https://github.com/OpenPrograms/Magik6k-Programs/tree/master/network}{here}. It may or may not include DNS.}
+\end{itemize}
 \appendix
 \chapter{The MIT License}\label{mit}
 \begin{verbatim}
