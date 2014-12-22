@@ -34,6 +34,15 @@ OpenComputers is a Minecraft mod, as stated before. It has network cards, both w
 	\item
 	\href{http://pastebin.com/pxFY89UZ}{pedrosgali's implementation.} Although the 'real man' bit on line 10 is false.
 \end{itemize}
+\subsection{Commentary on current implementations}
+In my view, each current implementation leaves a little something to be desired.  A few of them are unfinished and nofunctional --- which is bad as variety's always a good thing. Especially with software. The ones that \emph{are} functional often have minor flaws or niggles. \subsubsection{SuPeRMiNoR2's implementation}
+Starting from the top of the list, SuPeRMiNoR2's implementation is seen. It uses, as many programs do (the unfinished version of NiDuS included) a table to represent the DNS database. This works because tables are key-value, and DNS is also fundamentally a key-value database. It uses ports 42 and 43 for communication. It uses a binary protocol for communication, as do a number of other implementations (NiDuS doesn't and most likely never will.) Server and client code are in the same file, the server code being isolated into a single \texttt{server()} function. It uses the same format for communication and for persistent storage of the DNS database. It appears to be capable of the following:
+\begin{itemize}
+	\item Registration of names
+	\item Looking names up
+	\item Reverse lookup of names
+\end{itemize}
+However, it appears to be incapable of \emph{de}registration of names, meaning once a name is taken it cannot be removed without nuking the entire database -- additionally, updates are impossible and the database is certain to accumulate cruft over time, increasing size in a very likely RAM-constrained environment. This mistake should be a priority fix, in my humble opinion.
 \appendix
 \chapter{The MIT License}\label{mit}
 \begin{verbatim}
